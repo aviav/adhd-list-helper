@@ -77,10 +77,10 @@ num2words = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', \
 
 def n2w(n):
     try:
-        return num2words[n]
+        return num2words[n].lower()
     except KeyError:
         try:
-            return num2words[n-n%10] + num2words[n%10].lower()
+            return num2words[n-n%10].lower() + num2words[n%10].lower()
         except KeyError:
             return 'Number out of range'
 
