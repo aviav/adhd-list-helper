@@ -38,8 +38,11 @@ def shuffle_all(
     fields = dict(ctx.note().items())
     non_blank_values = extract_values_before_blank(fields)
     random.shuffle(non_blank_values)
+    list = ("<ul>"
+    f"{''.join(['<li>' + value + '</li>' for value in non_blank_values])}"
+    "</ul>")
 
-    return '<br><br>'.join(non_blank_values)
+    return list
 
 hooks.field_filter.append(shuffle_all)
 
@@ -54,8 +57,11 @@ def shuffle_all_except(
     fields.pop(field)
     non_blank_values = extract_values_before_blank(fields)
     random.shuffle(non_blank_values)
+    list = ("<ul>"
+    f"{''.join(['<li>' + value + '</li>' for value in non_blank_values])}"
+    "</ul>")
 
-    return '<br><br>'.join(non_blank_values)
+    return list
 
 hooks.field_filter.append(shuffle_all_except)
 
